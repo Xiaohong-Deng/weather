@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.create(email: "user1@example.com", password: "password", password_confirmation: "password")
+l = Location.create(name: "Shanghai")
+l.recordings.create(temp: 4, status: "cloudy")
+l.recordings.create(temp: 2, status: "rainy")
+l.recordings.create(temp: 0, status: "cloudy")
+l.recordings.create(temp: -2, status: "snowy")
+l.recordings.create(temp: 8, status: "sunny")

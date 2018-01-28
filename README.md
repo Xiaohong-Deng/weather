@@ -2,6 +2,8 @@
 master: Use jbuilder and serializer building json response. Plain API that can be accessed anonymously.
 
 jwt-AUTH_METHOD: Different approaches using Json Web Token to do authentication before accessing API.
+## Plain API
+Just mind the namespace. Without explicitly implementing `show`, it goes to corresponding path to fetch the template. In our case there is just `show.json.jbuilder`.
 ## Authentication
 By and large, authentication consists of two steps.
 1. User signs in to retrieve JWT by send a POST form.
@@ -19,7 +21,9 @@ Internally, it calls `env['warden'].authenticate!`. env['warden'] is an object t
 ##### `Proxy#authenticate!`
 This method will dynamically decide which strategies to call to do the authentication. It calls `valid?`. If it's not defined by you that's fine because Warden provides one that always returns true. After calling `valid?` it will execute `YOUR_STRATEGY._run!` which internally calls your custom `authenticate!`.
 ## ActiveModelSerializers and Sinatra
-Be sure to check out [docs][1]. Coming soon.
+Be sure to check out [docs][1].
+
+With serializers implemented, `render json: @location` calls the corresponding serializer to generate the json response. Switch between adapters in `/config/initializers`.
 ## VueJS interacts with API
 Coming soon.
 

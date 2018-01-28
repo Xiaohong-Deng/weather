@@ -2,6 +2,7 @@ class Api::V1::LocationsController < Api::V1::ApplicationController
   before_action :set_location
 
   def show
+    render json: @location, include: ['recordings']
   end
 
   private

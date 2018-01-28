@@ -10,6 +10,8 @@ By and large, authentication consists of two steps.
 2. User accesses API with the JWT gained in step 1.
 ### Authentication with Knock
 Coming soon. [docs][0]
+### Authentication from Scratch
+Coming soon.
 ### Authentication with Devise&Warden
 We use Devise authentication system built on top of Warden to do the Json Web Token authentication for us. User signing in to acquire JWT is done the same old way which does not have anything to do with Devise.
 #### Custom Strategies
@@ -20,10 +22,12 @@ When you feed your strategy to Warden, `Warden::Strategies#add` is called to sto
 Internally, it calls `env['warden'].authenticate!`. env['warden'] is an object that can interact with you to do authentication. It is a `Proxy` object that is defined in Warden.
 ##### `Proxy#authenticate!`
 This method will dynamically decide which strategies to call to do the authentication. It calls `valid?`. If it's not defined by you that's fine because Warden provides one that always returns true. After calling `valid?` it will execute `YOUR_STRATEGY._run!` which internally calls your custom `authenticate!`.
-## ActiveModelSerializers and Sinatra
+## ActiveModelSerializers
 Be sure to check out [docs][1].
 
 With serializers implemented, `render json: @location` calls the corresponding serializer to generate the json response. Switch between adapters in `/config/initializers`.
+## Sinatra mounted in Rails
+
 ## VueJS interacts with API
 Coming soon.
 

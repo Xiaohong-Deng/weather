@@ -6,6 +6,10 @@ Rails.application.routes.draw do
         resources :recordings
       end
     end
+
+    namespace :v2 do
+      mount Api::V2::Locations, at: "/locations"
+    end
   end
 
   resources :locations

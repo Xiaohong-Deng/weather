@@ -2,6 +2,8 @@
 master: Use jbuilder and serializer building json response. Plain API that can be accessed anonymously.
 
 jwt-AUTH_METHOD: Different approaches using Json Web Token to do authentication before accessing API.
+
+sinatra-in-rails: Mount a Sinatra application in Rails that serves as the API controller. It's much faster than Rails controller. No authentication.
 ## Plain API
 Just mind the namespace. Without explicitly implementing `show`, it goes to corresponding path to fetch the template. In our case there is just `show.json.jbuilder`.
 ## Authentication
@@ -27,7 +29,10 @@ Be sure to check out [docs][1].
 
 With serializers implemented, `render json: @location` calls the corresponding serializer to generate the json response. Switch between adapters in `/config/initializers`.
 ## Sinatra mounted in Rails
+1. Add Sinatra to Gemfile and bundle. Create a single file as the Sinatra application that serves as API controller.
+2. Mount the Sinatra application in your routes.
 
+Not able to apply json_api adapter to Sinatra. Not sure how it can be achieved.
 ## VueJS interacts with API
 Coming soon.
 
